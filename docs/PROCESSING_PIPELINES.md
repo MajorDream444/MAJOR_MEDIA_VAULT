@@ -1,0 +1,90 @@
+# Processing Pipelines
+
+This layer prepares the vault for ffmpeg conversion, MP3 extraction, thumbnail generation, Whisper transcription, local or Kimi summaries, Notion sync, Airtable sync, Google Drive folders, and Google Takeout parsing.
+
+## Local-First Rule
+
+All scripts are safe by default. Media transformation scripts run in dry-run mode unless `--write` is passed. Sync scripts only create local payload files unless live sync is implemented later.
+
+## ffmpeg Workflows
+
+MOV to MP4:
+
+```bash
+python3 scripts/convert_mov_to_mp4.py --input "/path/file.MOV"
+python3 scripts/convert_mov_to_mp4.py --input "/path/file.MOV" --write
+```
+
+MP3 generation:
+
+```bash
+python3 scripts/extract_audio_mp3.py --input "/path/file.MOV"
+python3 scripts/extract_audio_mp3.py --input "/path/file.MOV" --write
+```
+
+Thumbnail generation:
+
+```bash
+python3 scripts/generate_thumbnail.py --input "/path/file.MOV"
+python3 scripts/generate_thumbnail.py --input "/path/file.MOV" --timestamp 00:00:03 --write
+```
+
+## Queue Runner
+
+Run queued tasks in dry-run mode:
+
+```bash
+python3 scripts/run_processing_queue.py --queue queues/processing_queue.json
+python3 scripts/run_processing_queue.py --queue queues/processing_queue.json --task-type convert_mov
+```
+
+Run supported tools for real only after review:
+
+```bash
+python3 scripts/run_processing_queue.py --queue queues/processing_queue.json --task-type convert_mov --write
+```
+
+## Whisper Transcription
+
+Requires the local `whisper` CLI to be installed.
+
+```bash
+python3 scripts/transcribe_whisper.py --input "/path/audio.mp3"
+python3 scripts/transcribe_whisper.py --input "/path/audio.mp3" --model base --write
+```
+
+## Kimi Or Local Model Summaries
+
+The first version writes structured summary placeholders and keeps provider choice explicit.
+
+```bash
+python3 scripts/summarize_media.py --input exports/transcripts/example.json --provider local
+python3 scripts/summarize_media.py --input exports/transcripts/example.json --provider kimi
+```
+
+## Notion And Airtable Sync
+
+Current behavior writes dry-run payloads:
+
+```bash
+python3 scripts/sync_notion.py --inventory data/media_inventory.json
+python3 scripts/sync_airtable.py --inventory data/media_inventory.json
+```
+
+Future live write mode must require explicit credentials and should never print secrets.
+
+## Google Drive Connector
+
+The first connector scans the local Google Drive folder created by Google Drive for desktop.
+
+```bash
+python3 scripts/scan_google_drive.py --path "$HOME/Library/CloudStorage/GoogleDrive-ACCOUNT/My Drive"
+```
+
+## Google Takeout Parser
+
+The parser scans the Takeout folder and creates a sidecar map for Google JSON metadata.
+
+```bash
+python3 scripts/parse_google_takeout.py --path "/path/to/Takeout"
+```

@@ -1,0 +1,25 @@
+[
+  {
+    "queue_id": "f1d453301e2a956cfa6cac4e",
+    "media_id": "91672d5073a265700c904dfc",
+    "task_type": "convert_mov",
+    "source_path": "/Users/majordreamwilliams/Documents/New project 8/examples/sample_media/DCIM/VID_0002.MOV",
+    "result": {
+      "status": "dry_run",
+      "command": [
+        "ffmpeg",
+        "-y",
+        "-i",
+        "/Users/majordreamwilliams/Documents/New project 8/examples/sample_media/DCIM/VID_0002.MOV",
+        "-c:v",
+        "libx264",
+        "-c:a",
+        "aac",
+        "-movflags",
+        "+faststart",
+        "exports/conversions/VID_0002_converted.mp4"
+      ],
+      "output_path": "exports/conversions/VID_0002_converted.mp4"
+    }
+  }
+]

@@ -1,0 +1,42 @@
+{
+  "ffmpeg": {
+    "mov_to_mp4": {
+      "enabled": true,
+      "default_output_dir": "exports/conversions",
+      "task_type": "convert_mov"
+    },
+    "audio_extraction": {
+      "enabled": true,
+      "default_output_dir": "exports/audio",
+      "task_type": "extract_audio"
+    },
+    "thumbnail_generation": {
+      "enabled": true,
+      "default_output_dir": "exports/thumbnails",
+      "task_type": "generate_thumbnail"
+    }
+  },
+  "transcription": {
+    "provider": "whisper",
+    "default_model": "base",
+    "default_output_dir": "exports/transcripts"
+  },
+  "summaries": {
+    "providers": ["local", "kimi"],
+    "default_output_dir": "exports/summaries"
+  },
+  "sync": {
+    "notion": {
+      "enabled": false,
+      "required_env": ["NOTION_TOKEN", "NOTION_DATABASE_ID"]
+    },
+    "airtable": {
+      "enabled": false,
+      "required_env": ["AIRTABLE_API_KEY", "AIRTABLE_BASE_ID", "AIRTABLE_TABLE_NAME"]
+    }
+  },
+  "connectors": {
+    "google_drive": "local_folder_first",
+    "google_takeout": "folder_parser_first"
+  }
+}
