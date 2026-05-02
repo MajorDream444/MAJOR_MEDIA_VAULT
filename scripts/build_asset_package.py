@@ -20,7 +20,8 @@ from src.media_vault.inventory import (  # noqa: E402
     VIDEO_EXTENSIONS,
     build_media_record,
 )
-from src.media_vault.workflows import find_tool, write_json  # noqa: E402
+from src.media_vault.io_utils import sanitize_for_json, write_json_safe, write_text_safe  # noqa: E402
+from src.media_vault.workflows import find_tool  # noqa: E402
 
 
 SOURCE_SAFETY = "Original was not moved, renamed, modified, uploaded, or deleted."
@@ -89,7 +90,7 @@ def run_json_command(command: List[str]) -> Dict[str, object]:
             "stdout": completed.stdout,
             "stderr": completed.stderr,
         }
-    return {"status": "processed", "reason": "Metadata extracted.", "command": command, "data": payload}
+    return {"status": "processed", "reason": "Metadata extracted.", "command": command, "data": sanitize_for_json(payload)}
 
 
 def ffprobe_metadata(source_path: Path) -> Dict[str, object]:
@@ -239,7 +240,7 @@ def write_summary_placeholder(package_dir: Path, source_path: Path, media_id: st
         "Summary generation will be filled by a future local/Kimi/Ollama summarizer step.",
         "",
     ]
-    output_path.write_text("\n".join(lines), encoding="utf-8")
+    write_text_safe(output_path, "\n".join(lines))
     return status_result("processed", "summary.md placeholder written.", output_path)
 
 
@@ -261,7 +262,7 @@ def write_asset_notes(package_dir: Path, manifest: Dict[str, object]) -> None:
             if isinstance(asset_result, dict):
                 lines.append(f"- `{asset_name}`: `{asset_result.get('status')}` - {asset_result.get('reason')}")
     lines.extend(["", "## Notes", "", "- Originals are preserved by policy.", "- Derived files live only in this package folder."])
-    (package_dir / "asset_notes.md").write_text("\n".join(lines), encoding="utf-8")
+    write_text_safe(package_dir / "asset_notes.md", "\n".join(lines))
 
 
 def run_package_extension(command: List[str]) -> Dict[str, object]:
@@ -286,13 +287,13 @@ def run_package_extension(command: List[str]) -> Dict[str, object]:
 
 def build_metadata(source_path: Path, privacy_level: str) -> Dict[str, object]:
     inventory_record = build_media_record(source_path, privacy_level=privacy_level)
-    return {
+    return sanitize_for_json({
         "source_safety": SOURCE_SAFETY,
         "inventory_record": inventory_record,
         "ffprobe": ffprobe_metadata(source_path),
         "exiftool": exiftool_metadata(source_path),
         "created_at": datetime.now(timezone.utc).isoformat(),
-    }
+    })
 
 
 def main() -> int:
@@ -321,7 +322,7 @@ def main() -> int:
         "original_copy": copy_original(source_path, package_dir, dry_run, args.copy_original),
     }
 
-    write_json(metadata, package_dir / "metadata.json")
+    write_json_safe(package_dir / "metadata.json", metadata)
     manifest = {
         "media_id": media_id,
         "source_path": str(source_path),
@@ -333,7 +334,7 @@ def main() -> int:
         "created_at": datetime.now(timezone.utc).isoformat(),
         "assets": assets,
     }
-    write_json(manifest, package_dir / "asset_manifest.json")
+    write_json_safe(package_dir / "asset_manifest.json", manifest)
     write_asset_notes(package_dir, manifest)
 
     extensions: Dict[str, object] = {}
@@ -361,7 +362,7 @@ def main() -> int:
         extensions["thumbnail_prompts"] = run_package_extension(command)
     if extensions:
         manifest["extensions"] = extensions
-        write_json(manifest, package_dir / "asset_manifest.json")
+        write_json_safe(package_dir / "asset_manifest.json", manifest)
         write_asset_notes(package_dir, manifest)
 
     print(f"Built asset package in {'dry-run' if dry_run else 'write'} mode: {package_dir}")

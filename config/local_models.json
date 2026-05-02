@@ -1,0 +1,9 @@
+{
+  "default_model": "kimi",
+  "fallback_model": "llama3.2",
+  "tasks": {
+    "summary": "kimi",
+    "seo": "kimi",
+    "agent_memory": "kimi"
+  }
+}

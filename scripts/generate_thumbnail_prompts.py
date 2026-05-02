@@ -3,11 +3,16 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
 from typing import Dict
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(REPO_ROOT))
+
+from src.media_vault.io_utils import read_json_safe, read_text_safe, write_text_safe  # noqa: E402
+
 YOUTUBE_TEMPLATE_PATH = REPO_ROOT / "config" / "design_templates" / "youtube_thumbnail_premium.md"
 
 
@@ -62,17 +67,11 @@ def resolve_package_dir(path: Path) -> Path:
 
 
 def read_text(path: Path, default: str = "") -> str:
-    if not path.exists():
-        return default
-    return path.read_text(encoding="utf-8", errors="replace")
+    return read_text_safe(path) or default
 
 
 def read_json(path: Path) -> Dict[str, object]:
-    if not path.exists():
-        return {}
-    with path.open("r", encoding="utf-8") as json_file:
-        data = json.load(json_file)
-    return data if isinstance(data, dict) else {}
+    return read_json_safe(path)
 
 
 def compact(text: str, limit: int = 900) -> str:
@@ -143,7 +142,7 @@ def main() -> int:
 
     for file_name, spec in PROMPT_SPECS.items():
         prompt = build_prompt(spec, package_dir, summary, transcript, metadata, manifest)
-        (prompts_dir / file_name).write_text(prompt + "\n", encoding="utf-8")
+        write_text_safe(prompts_dir / file_name, prompt)
 
     print(f"Wrote {len(PROMPT_SPECS)} thumbnail prompt files: {prompts_dir}")
     return 0

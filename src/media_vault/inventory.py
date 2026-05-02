@@ -8,6 +8,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, Iterable, List, Optional
 
+from src.media_vault.io_utils import read_text_safe, sanitize_for_json, write_json_safe
+
 
 MEDIA_FIELDS = [
     "media_id",
@@ -154,15 +156,16 @@ def write_inventory_csv(records: Iterable[Dict[str, object]], output_path: Path)
 
 
 def write_inventory_json(records: Iterable[Dict[str, object]], output_path: Path) -> None:
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    with output_path.open("w", encoding="utf-8") as json_file:
-        json.dump(list(records), json_file, indent=2)
-        json_file.write("\n")
+    write_json_safe(output_path, list(records))
 
 
 def read_inventory_json(input_path: Path) -> List[Dict[str, object]]:
-    with input_path.open("r", encoding="utf-8") as json_file:
-        data = json.load(json_file)
+    text = read_text_safe(input_path)
+    try:
+        data = json.loads(text)
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"Inventory JSON could not be parsed: {exc}") from exc
+    data = sanitize_for_json(data)
     if not isinstance(data, list):
         raise ValueError("Inventory JSON must be a list of media records.")
     return data
@@ -212,7 +215,4 @@ def build_queue_task(record: Dict[str, object], task_type: str, notes: str, crea
 
 
 def write_processing_queue(queue: Iterable[Dict[str, object]], output_path: Path) -> None:
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    with output_path.open("w", encoding="utf-8") as json_file:
-        json.dump(list(queue), json_file, indent=2)
-        json_file.write("\n")
+    write_json_safe(output_path, list(queue))

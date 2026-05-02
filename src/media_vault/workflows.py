@@ -8,6 +8,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, Iterable, List, Optional
 
+from src.media_vault.io_utils import write_json_safe
+
 
 COMMON_TOOL_DIRS = [
     Path("/opt/homebrew/bin"),
@@ -180,7 +182,4 @@ def require_env(keys: Iterable[str]) -> Dict[str, str]:
 
 
 def write_json(payload: object, output_path: Path) -> None:
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    with output_path.open("w", encoding="utf-8") as output_file:
-        json.dump(payload, output_file, indent=2)
-        output_file.write("\n")
+    write_json_safe(output_path, payload)

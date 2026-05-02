@@ -84,6 +84,15 @@ Generate platform publishing drafts from an asset package:
 python3 scripts/generate_content_package.py --asset-package-dir exports/asset_package_sample
 ```
 
+Generate local AI enrichment drafts with Ollama-compatible models:
+
+```bash
+python3 scripts/enrich_asset_package.py --asset-package-dir exports/asset_package_sample
+python3 scripts/enrich_asset_package.py --asset-package-dir exports/asset_package_sample --write
+```
+
+Metadata and sidecar files are read through safe encoding helpers. If a real phone/video metadata file contains non-UTF-8 bytes or invalid JSON, the workflow continues with warning fields instead of crashing.
+
 ## Whisper Transcription
 
 Requires the local `whisper` CLI to be installed.

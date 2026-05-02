@@ -94,6 +94,12 @@ python3 scripts/generate_thumbnail_prompts.py --asset-package-dir exports/asset_
 python3 scripts/generate_content_package.py --asset-package-dir exports/asset_package_sample
 ```
 
+## Run Local AI Enrichment
+
+```bash
+python3 scripts/enrich_asset_package.py --asset-package-dir exports/asset_package_sample
+```
+
 ## Check Dependencies
 
 ```bash
@@ -110,6 +116,7 @@ make package-sample
 make thumbnails-sample
 make thumbnail-prompts-sample
 make content-package-sample
+make enrich-sample
 make check-deps
 make test-compile
 ```

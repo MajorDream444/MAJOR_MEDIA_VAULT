@@ -3,9 +3,15 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, Iterable, List
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(REPO_ROOT))
+
+from src.media_vault.io_utils import read_json_safe, read_text_safe, write_json_safe, write_text_safe  # noqa: E402
 
 
 SOURCE_SAFETY = "Original was not moved, renamed, modified, uploaded, or deleted."
@@ -29,17 +35,11 @@ def resolve_package_dir(path: Path) -> Path:
 
 
 def read_text(path: Path) -> str:
-    if not path.exists():
-        return ""
-    return path.read_text(encoding="utf-8", errors="replace")
+    return read_text_safe(path)
 
 
 def read_json(path: Path) -> Dict[str, object]:
-    if not path.exists():
-        return {}
-    with path.open("r", encoding="utf-8") as json_file:
-        data = json.load(json_file)
-    return data if isinstance(data, dict) else {}
+    return read_json_safe(path)
 
 
 def compact(text: str, limit: int = 1200) -> str:
@@ -48,15 +48,11 @@ def compact(text: str, limit: int = 1200) -> str:
 
 
 def write_text(path: Path, content: str) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(content.rstrip() + "\n", encoding="utf-8")
+    write_text_safe(path, content)
 
 
 def write_json(path: Path, payload: object) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", encoding="utf-8") as json_file:
-        json.dump(payload, json_file, indent=2)
-        json_file.write("\n")
+    write_json_safe(path, payload)
 
 
 def prompt_files(package_dir: Path) -> Dict[str, str]:
@@ -392,11 +388,21 @@ def build_outputs(package_dir: Path) -> Dict[str, str]:
     return outputs
 
 
+def read_warnings(package_dir: Path) -> List[str]:
+    warnings: List[str] = []
+    for name in ["metadata.json", "asset_manifest.json"]:
+        data = read_json(package_dir / name)
+        if data.get("_read_error"):
+            warnings.append(f"{name}: {data.get('_read_error')}")
+    return warnings
+
+
 def main() -> int:
     args = parse_args()
     package_dir = resolve_package_dir(Path(args.asset_package_dir))
     output_dir = Path(args.output_dir).expanduser().resolve() if args.output_dir else package_dir / "content_package"
     outputs = build_outputs(package_dir)
+    warnings = read_warnings(package_dir)
 
     for relative_path, content in outputs.items():
         write_text(output_dir / relative_path, content)
@@ -407,6 +413,7 @@ def main() -> int:
         "source_safety": SOURCE_SAFETY,
         "created_at": datetime.now(timezone.utc).isoformat(),
         "generated_files": sorted(outputs),
+        "warnings": warnings,
         "rules": [
             "Deterministic template-based generation.",
             "Publishing drafts are derived outputs only.",

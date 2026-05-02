@@ -1,0 +1,59 @@
+{
+  "asset_package_dir": "/Users/majordreamwilliams/Documents/New project 8/exports/asset_package_sample/91672d5073a265700c904dfc",
+  "enrichment_dir": "/Users/majordreamwilliams/Documents/New project 8/exports/asset_package_sample/91672d5073a265700c904dfc/enrichment",
+  "model": "kimi",
+  "mode": "dry_run",
+  "context_level": "low_context",
+  "warnings": [],
+  "source_safety": "Original was not moved, renamed, modified, uploaded, or deleted.",
+  "created_at": "2026-05-02T17:51:30.974093+00:00",
+  "ollama_path": "/opt/homebrew/bin/ollama",
+  "available_models_checked": [],
+  "outputs": {
+    "visual_summary.md": {
+      "status": "dry_run_ready",
+      "reason": "Dry-run only. Pass --write to call Ollama.",
+      "output_path": "/Users/majordreamwilliams/Documents/New project 8/exports/asset_package_sample/91672d5073a265700c904dfc/enrichment/visual_summary.md"
+    },
+    "narrative_summary.md": {
+      "status": "dry_run_ready",
+      "reason": "Dry-run only. Pass --write to call Ollama.",
+      "output_path": "/Users/majordreamwilliams/Documents/New project 8/exports/asset_package_sample/91672d5073a265700c904dfc/enrichment/narrative_summary.md"
+    },
+    "seo_tags.md": {
+      "status": "dry_run_ready",
+      "reason": "Dry-run only. Pass --write to call Ollama.",
+      "output_path": "/Users/majordreamwilliams/Documents/New project 8/exports/asset_package_sample/91672d5073a265700c904dfc/enrichment/seo_tags.md"
+    },
+    "title_options.md": {
+      "status": "dry_run_ready",
+      "reason": "Dry-run only. Pass --write to call Ollama.",
+      "output_path": "/Users/majordreamwilliams/Documents/New project 8/exports/asset_package_sample/91672d5073a265700c904dfc/enrichment/title_options.md"
+    },
+    "clip_ideas.md": {
+      "status": "dry_run_ready",
+      "reason": "Dry-run only. Pass --write to call Ollama.",
+      "output_path": "/Users/majordreamwilliams/Documents/New project 8/exports/asset_package_sample/91672d5073a265700c904dfc/enrichment/clip_ideas.md"
+    },
+    "substack_angles.md": {
+      "status": "dry_run_ready",
+      "reason": "Dry-run only. Pass --write to call Ollama.",
+      "output_path": "/Users/majordreamwilliams/Documents/New project 8/exports/asset_package_sample/91672d5073a265700c904dfc/enrichment/substack_angles.md"
+    },
+    "agent_memory_enriched.md": {
+      "status": "dry_run_ready",
+      "reason": "Dry-run only. Pass --write to call Ollama.",
+      "output_path": "/Users/majordreamwilliams/Documents/New project 8/exports/asset_package_sample/91672d5073a265700c904dfc/enrichment/agent_memory_enriched.md"
+    },
+    "privacy_review.md": {
+      "status": "dry_run_ready",
+      "reason": "Dry-run only. Pass --write to call Ollama.",
+      "output_path": "/Users/majordreamwilliams/Documents/New project 8/exports/asset_package_sample/91672d5073a265700c904dfc/enrichment/privacy_review.md"
+    }
+  },
+  "rules": [
+    "Enrichment output is derived text only.",
+    "Originals were not moved, renamed, modified, uploaded, or deleted.",
+    "Human review required before publishing."
+  ]
+}

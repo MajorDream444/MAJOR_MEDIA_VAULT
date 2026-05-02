@@ -77,6 +77,7 @@ python3 scripts/build_asset_package.py --input examples/sample_media/DCIM/VID_00
 python3 scripts/generate_platform_thumbnails.py --input examples/sample_media/DCIM/IMG_0001.JPG --output-dir exports/thumbnail_sample
 python3 scripts/generate_thumbnail_prompts.py --asset-package-dir exports/asset_package_sample
 python3 scripts/generate_content_package.py --asset-package-dir exports/asset_package_sample
+python3 scripts/enrich_asset_package.py --asset-package-dir exports/asset_package_sample
 ```
 
 See [docs/PROCESSING_PIPELINES.md](/Users/majordreamwilliams/Documents/New%20project%208/docs/PROCESSING_PIPELINES.md).

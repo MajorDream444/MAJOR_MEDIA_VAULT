@@ -1,4 +1,4 @@
-.PHONY: scan-sample audit-sample process-sample-dry-run package-sample thumbnails-sample thumbnail-prompts-sample content-package-sample check-deps test-compile
+.PHONY: scan-sample audit-sample process-sample-dry-run package-sample thumbnails-sample thumbnail-prompts-sample content-package-sample enrich-sample check-deps test-compile
 
 scan-sample:
 	python3 scripts/scan_media.py --path examples/sample_media --output data/media_inventory.csv
@@ -20,6 +20,9 @@ thumbnail-prompts-sample:
 
 content-package-sample:
 	python3 scripts/generate_content_package.py --asset-package-dir exports/asset_package_sample
+
+enrich-sample:
+	python3 scripts/enrich_asset_package.py --asset-package-dir exports/asset_package_sample
 
 check-deps:
 	python3 scripts/check_dependencies.py
