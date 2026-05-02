@@ -72,6 +72,7 @@ python3 scripts/sync_airtable.py --inventory data/media_inventory.json
 python3 scripts/scan_google_drive.py --path "/path/to/local/Google Drive"
 python3 scripts/parse_google_takeout.py --path "/path/to/Takeout"
 python3 scripts/run_processing_queue.py --queue queues/processing_queue.json --task-type convert_mov
+python3 scripts/process_selected_media.py --queue exports/sample_audit/processing_queue.json --output-dir exports/processed_sample --limit 5
 ```
 
 See [docs/PROCESSING_PIPELINES.md](/Users/majordreamwilliams/Documents/New%20project%208/docs/PROCESSING_PIPELINES.md).

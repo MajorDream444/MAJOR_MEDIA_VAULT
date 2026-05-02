@@ -1,0 +1,279 @@
+{
+  "runs": [
+    {
+      "queue_id": "f1d453301e2a956cfa6cac4e",
+      "task_type": "convert_mov",
+      "mode": "dry_run",
+      "created_at": "2026-05-02T06:36:26.495798+00:00",
+      "actions": [
+        {
+          "status": "dry_run_ready",
+          "reason": "Command is ready but --write was not passed.",
+          "command": [
+            "ffmpeg",
+            "-y",
+            "-i",
+            "/Users/majordreamwilliams/Documents/New project 8/examples/sample_media/DCIM/VID_0002.MOV",
+            "-c:v",
+            "libx264",
+            "-c:a",
+            "aac",
+            "-movflags",
+            "+faststart",
+            "/Users/majordreamwilliams/Documents/New project 8/exports/processed_sample/91672d5073a265700c904dfc/VID_0002_converted.mp4"
+          ],
+          "output_path": "/Users/majordreamwilliams/Documents/New project 8/exports/processed_sample/91672d5073a265700c904dfc/VID_0002_converted.mp4",
+          "action": "mov_to_mp4"
+        }
+      ]
+    },
+    {
+      "queue_id": "b2eeea2b802163c887631eb4",
+      "task_type": "extract_audio",
+      "mode": "dry_run",
+      "created_at": "2026-05-02T06:36:26.496093+00:00",
+      "actions": [
+        {
+          "status": "dry_run_ready",
+          "reason": "Command is ready but --write was not passed.",
+          "command": [
+            "ffmpeg",
+            "-y",
+            "-i",
+            "/Users/majordreamwilliams/Documents/New project 8/examples/sample_media/DCIM/VID_0002.MOV",
+            "-vn",
+            "-codec:a",
+            "libmp3lame",
+            "-q:a",
+            "2",
+            "/Users/majordreamwilliams/Documents/New project 8/exports/processed_sample/91672d5073a265700c904dfc/VID_0002_audio.mp3"
+          ],
+          "output_path": "/Users/majordreamwilliams/Documents/New project 8/exports/processed_sample/91672d5073a265700c904dfc/VID_0002_audio.mp3",
+          "action": "extract_mp3"
+        }
+      ]
+    },
+    {
+      "queue_id": "5b8a56384c605460a3f17093",
+      "task_type": "generate_thumbnail",
+      "mode": "dry_run",
+      "created_at": "2026-05-02T06:36:26.496348+00:00",
+      "actions": [
+        {
+          "status": "dry_run_ready",
+          "reason": "Command is ready but --write was not passed.",
+          "command": [
+            "ffmpeg",
+            "-y",
+            "-ss",
+            "00:00:01",
+            "-i",
+            "/Users/majordreamwilliams/Documents/New project 8/examples/sample_media/DCIM/VID_0002.MOV",
+            "-frames:v",
+            "1",
+            "-q:v",
+            "2",
+            "/Users/majordreamwilliams/Documents/New project 8/exports/processed_sample/91672d5073a265700c904dfc/VID_0002_thumbnail.jpg"
+          ],
+          "output_path": "/Users/majordreamwilliams/Documents/New project 8/exports/processed_sample/91672d5073a265700c904dfc/VID_0002_thumbnail.jpg",
+          "action": "thumbnail"
+        }
+      ]
+    },
+    {
+      "queue_id": "949b9479905fb182f40d05bb",
+      "task_type": "transcribe",
+      "mode": "dry_run",
+      "created_at": "2026-05-02T06:36:26.496606+00:00",
+      "actions": [
+        {
+          "status": "dry_run_ready",
+          "reason": "Command is ready but --write was not passed.",
+          "command": [
+            "ffmpeg",
+            "-y",
+            "-i",
+            "/Users/majordreamwilliams/Documents/New project 8/examples/sample_media/DCIM/VID_0002.MOV",
+            "-vn",
+            "-codec:a",
+            "libmp3lame",
+            "-q:a",
+            "2",
+            "/Users/majordreamwilliams/Documents/New project 8/exports/processed_sample/91672d5073a265700c904dfc/VID_0002_audio.mp3"
+          ],
+          "output_path": "/Users/majordreamwilliams/Documents/New project 8/exports/processed_sample/91672d5073a265700c904dfc/VID_0002_audio.mp3",
+          "action": "extract_mp3"
+        }
+      ]
+    },
+    {
+      "queue_id": "f1d453301e2a956cfa6cac4e",
+      "task_type": "convert_mov",
+      "mode": "write",
+      "created_at": "2026-05-02T06:36:34.101187+00:00",
+      "actions": [
+        {
+          "status": "skipped_missing_dependency",
+          "reason": "ffmpeg is required for MOV to MP4 conversion.",
+          "output_path": "/Users/majordreamwilliams/Documents/New project 8/exports/processed_sample/91672d5073a265700c904dfc/VID_0002_converted.mp4",
+          "action": "mov_to_mp4"
+        }
+      ]
+    },
+    {
+      "queue_id": "b2eeea2b802163c887631eb4",
+      "task_type": "extract_audio",
+      "mode": "write",
+      "created_at": "2026-05-02T06:36:34.101873+00:00",
+      "actions": [
+        {
+          "status": "skipped_missing_dependency",
+          "reason": "ffmpeg is required for MP3 extraction.",
+          "output_path": "/Users/majordreamwilliams/Documents/New project 8/exports/processed_sample/91672d5073a265700c904dfc/VID_0002_audio.mp3",
+          "action": "extract_mp3"
+        }
+      ]
+    },
+    {
+      "queue_id": "5b8a56384c605460a3f17093",
+      "task_type": "generate_thumbnail",
+      "mode": "write",
+      "created_at": "2026-05-02T06:36:34.102407+00:00",
+      "actions": [
+        {
+          "status": "skipped_missing_dependency",
+          "reason": "ffmpeg is required for thumbnail generation.",
+          "output_path": "/Users/majordreamwilliams/Documents/New project 8/exports/processed_sample/91672d5073a265700c904dfc/VID_0002_thumbnail.jpg",
+          "action": "thumbnail"
+        }
+      ]
+    },
+    {
+      "queue_id": "949b9479905fb182f40d05bb",
+      "task_type": "transcribe",
+      "mode": "write",
+      "created_at": "2026-05-02T06:36:34.102883+00:00",
+      "actions": [
+        {
+          "status": "skipped_missing_dependency",
+          "reason": "ffmpeg is required for MP3 extraction.",
+          "output_path": "/Users/majordreamwilliams/Documents/New project 8/exports/processed_sample/91672d5073a265700c904dfc/VID_0002_audio.mp3",
+          "action": "extract_mp3"
+        }
+      ]
+    },
+    {
+      "queue_id": "f1d453301e2a956cfa6cac4e",
+      "task_type": "convert_mov",
+      "mode": "dry_run",
+      "created_at": "2026-05-02T06:36:34.119988+00:00",
+      "actions": [
+        {
+          "status": "dry_run_ready",
+          "reason": "Command is ready but --write was not passed.",
+          "command": [
+            "ffmpeg",
+            "-y",
+            "-i",
+            "/Users/majordreamwilliams/Documents/New project 8/examples/sample_media/DCIM/VID_0002.MOV",
+            "-c:v",
+            "libx264",
+            "-c:a",
+            "aac",
+            "-movflags",
+            "+faststart",
+            "/Users/majordreamwilliams/Documents/New project 8/exports/processed_sample/91672d5073a265700c904dfc/VID_0002_converted.mp4"
+          ],
+          "output_path": "/Users/majordreamwilliams/Documents/New project 8/exports/processed_sample/91672d5073a265700c904dfc/VID_0002_converted.mp4",
+          "action": "mov_to_mp4"
+        }
+      ]
+    },
+    {
+      "queue_id": "b2eeea2b802163c887631eb4",
+      "task_type": "extract_audio",
+      "mode": "dry_run",
+      "created_at": "2026-05-02T06:36:34.120531+00:00",
+      "actions": [
+        {
+          "status": "dry_run_ready",
+          "reason": "Command is ready but --write was not passed.",
+          "command": [
+            "ffmpeg",
+            "-y",
+            "-i",
+            "/Users/majordreamwilliams/Documents/New project 8/examples/sample_media/DCIM/VID_0002.MOV",
+            "-vn",
+            "-codec:a",
+            "libmp3lame",
+            "-q:a",
+            "2",
+            "/Users/majordreamwilliams/Documents/New project 8/exports/processed_sample/91672d5073a265700c904dfc/VID_0002_audio.mp3"
+          ],
+          "output_path": "/Users/majordreamwilliams/Documents/New project 8/exports/processed_sample/91672d5073a265700c904dfc/VID_0002_audio.mp3",
+          "action": "extract_mp3"
+        }
+      ]
+    },
+    {
+      "queue_id": "5b8a56384c605460a3f17093",
+      "task_type": "generate_thumbnail",
+      "mode": "dry_run",
+      "created_at": "2026-05-02T06:36:34.121021+00:00",
+      "actions": [
+        {
+          "status": "dry_run_ready",
+          "reason": "Command is ready but --write was not passed.",
+          "command": [
+            "ffmpeg",
+            "-y",
+            "-ss",
+            "00:00:01",
+            "-i",
+            "/Users/majordreamwilliams/Documents/New project 8/examples/sample_media/DCIM/VID_0002.MOV",
+            "-frames:v",
+            "1",
+            "-q:v",
+            "2",
+            "/Users/majordreamwilliams/Documents/New project 8/exports/processed_sample/91672d5073a265700c904dfc/VID_0002_thumbnail.jpg"
+          ],
+          "output_path": "/Users/majordreamwilliams/Documents/New project 8/exports/processed_sample/91672d5073a265700c904dfc/VID_0002_thumbnail.jpg",
+          "action": "thumbnail"
+        }
+      ]
+    },
+    {
+      "queue_id": "949b9479905fb182f40d05bb",
+      "task_type": "transcribe",
+      "mode": "dry_run",
+      "created_at": "2026-05-02T06:36:34.121470+00:00",
+      "actions": [
+        {
+          "status": "dry_run_ready",
+          "reason": "Command is ready but --write was not passed.",
+          "command": [
+            "ffmpeg",
+            "-y",
+            "-i",
+            "/Users/majordreamwilliams/Documents/New project 8/examples/sample_media/DCIM/VID_0002.MOV",
+            "-vn",
+            "-codec:a",
+            "libmp3lame",
+            "-q:a",
+            "2",
+            "/Users/majordreamwilliams/Documents/New project 8/exports/processed_sample/91672d5073a265700c904dfc/VID_0002_audio.mp3"
+          ],
+          "output_path": "/Users/majordreamwilliams/Documents/New project 8/exports/processed_sample/91672d5073a265700c904dfc/VID_0002_audio.mp3",
+          "action": "extract_mp3"
+        }
+      ]
+    }
+  ],
+  "media_id": "91672d5073a265700c904dfc",
+  "source_path": "/Users/majordreamwilliams/Documents/New project 8/examples/sample_media/DCIM/VID_0002.MOV",
+  "file_type": "video",
+  "output_dir": "/Users/majordreamwilliams/Documents/New project 8/exports/processed_sample/91672d5073a265700c904dfc",
+  "copy_originals": false,
+  "source_safety": "Originals were not moved, renamed, modified, uploaded, deleted, or copied.",
+  "updated_at": "2026-05-02T06:36:34.121467+00:00"
+}

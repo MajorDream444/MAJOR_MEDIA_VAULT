@@ -44,6 +44,20 @@ Run supported tools for real only after review:
 python3 scripts/run_processing_queue.py --queue queues/processing_queue.json --task-type convert_mov --write
 ```
 
+## Processed Output Packages
+
+Create per-`media_id` output folders with manifests and notes. Dry-run is the default:
+
+```bash
+python3 scripts/process_selected_media.py --queue exports/sample_audit/processing_queue.json --output-dir exports/processed_sample --limit 5
+```
+
+Write mode only creates derived files under the output directory when dependencies are installed. Originals are never changed or copied.
+
+```bash
+python3 scripts/process_selected_media.py --queue exports/sample_audit/processing_queue.json --output-dir exports/processed_sample --limit 5 --write
+```
+
 ## Whisper Transcription
 
 Requires the local `whisper` CLI to be installed.

@@ -1,0 +1,2 @@
+# MAJOR_MEDIA_VAULT currently uses only the Python standard library.
+# External command-line tools are checked by scripts/check_dependencies.py.
