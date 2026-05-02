@@ -1,0 +1,33 @@
+{
+  "asset_package_dir": "/Users/majordreamwilliams/Documents/New project 8/exports/asset_package_sample/91672d5073a265700c904dfc",
+  "output_dir": "/Users/majordreamwilliams/Documents/New project 8/exports/asset_package_sample/91672d5073a265700c904dfc/content_package",
+  "source_safety": "Original was not moved, renamed, modified, uploaded, or deleted.",
+  "created_at": "2026-05-02T07:59:22.723635+00:00",
+  "generated_files": [
+    "agent_memory/doctrine_notes.md",
+    "agent_memory/memory_card.md",
+    "agent_memory/reusable_quotes.md",
+    "podcast/description.md",
+    "podcast/episode_title_options.md",
+    "podcast/show_notes.md",
+    "substack/essay_seed.md",
+    "substack/headline_options.md",
+    "substack/intro.md",
+    "substack/pull_quotes.md",
+    "tiktok_reels/caption_options.md",
+    "tiktok_reels/cover_prompt.md",
+    "tiktok_reels/hashtags.txt",
+    "tiktok_reels/hook_options.md",
+    "youtube/chapters.md",
+    "youtube/description.md",
+    "youtube/tags.txt",
+    "youtube/thumbnail_prompt.md",
+    "youtube/title_options.md"
+  ],
+  "rules": [
+    "Deterministic template-based generation.",
+    "Publishing drafts are derived outputs only.",
+    "Originals were not moved, renamed, modified, uploaded, or deleted.",
+    "Human review required before publishing."
+  ]
+}

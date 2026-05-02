@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+
+# Local real-media smoke outputs should stay private unless explicitly curated.
+exports/real_asset_test/
+exports/real_test_audit/
+exports/real_test_processed/

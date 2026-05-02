@@ -1,0 +1,75 @@
+{
+  "source_safety": "Original was not moved, renamed, modified, uploaded, or deleted.",
+  "inventory_record": {
+    "media_id": "91672d5073a265700c904dfc",
+    "original_file_name": "VID_0002.MOV",
+    "extension": "mov",
+    "file_type": "video",
+    "mime_type": "video/quicktime",
+    "file_size_bytes": 23,
+    "file_size_mb": 0.0,
+    "created_at": "2026-05-02T06:16:43.538460+00:00",
+    "modified_at": "2026-05-02T06:16:43.538519+00:00",
+    "source_path": "/Users/majordreamwilliams/Documents/New project 8/examples/sample_media/DCIM/VID_0002.MOV",
+    "parent_folder": "/Users/majordreamwilliams/Documents/New project 8/examples/sample_media/DCIM",
+    "likely_camera_phone_media": true,
+    "is_large_file": false,
+    "needs_review": true,
+    "needs_conversion": true,
+    "needs_audio_extract": true,
+    "needs_transcription": true,
+    "needs_visual_summary": true,
+    "needs_thumbnail": true,
+    "needs_enhancement": false,
+    "privacy_level": "private",
+    "content_status": "unreviewed",
+    "archive_status": "cataloged",
+    "delete_safe": false
+  },
+  "ffprobe": {
+    "status": "failed",
+    "reason": "Command failed with exit code 1.",
+    "command": [
+      "/opt/homebrew/bin/ffprobe",
+      "-v",
+      "quiet",
+      "-print_format",
+      "json",
+      "-show_format",
+      "-show_streams",
+      "/Users/majordreamwilliams/Documents/New project 8/examples/sample_media/DCIM/VID_0002.MOV"
+    ],
+    "stdout": "{\n\n}\n",
+    "stderr": ""
+  },
+  "exiftool": {
+    "status": "processed",
+    "reason": "Metadata extracted.",
+    "command": [
+      "/opt/homebrew/bin/exiftool",
+      "-json",
+      "/Users/majordreamwilliams/Documents/New project 8/examples/sample_media/DCIM/VID_0002.MOV"
+    ],
+    "data": [
+      {
+        "SourceFile": "/Users/majordreamwilliams/Documents/New project 8/examples/sample_media/DCIM/VID_0002.MOV",
+        "ExifToolVersion": 13.55,
+        "FileName": "VID_0002.MOV",
+        "Directory": "/Users/majordreamwilliams/Documents/New project 8/examples/sample_media/DCIM",
+        "FileSize": "23 bytes",
+        "FileModifyDate": "2026:05:02 14:16:43+08:00",
+        "FileAccessDate": "2026:05:02 14:25:11+08:00",
+        "FileInodeChangeDate": "2026:05:02 14:16:45+08:00",
+        "FilePermissions": "-rw-r--r--",
+        "FileType": "TXT",
+        "FileTypeExtension": "txt",
+        "MIMEType": "text/plain",
+        "MIMEEncoding": "us-ascii",
+        "Newlines": "Unix LF",
+        "LineCount": 1,
+        "WordCount": 3
+      }
+    ]
+  },
+  "created_at": "2026-05-02T07:42:54.217540+00:00"
+}

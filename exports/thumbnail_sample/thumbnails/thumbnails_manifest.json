@@ -1,0 +1,115 @@
+{
+  "source_path": "/Users/majordreamwilliams/Documents/New project 8/examples/sample_media/DCIM/IMG_0001.JPG",
+  "file_type": "image",
+  "mode": "write",
+  "source_safety": "Original was not moved, renamed, modified, uploaded, or deleted.",
+  "created_at": "2026-05-02T07:42:48.794963+00:00",
+  "preset": "all",
+  "outputs": {
+    "youtube_16x9": {
+      "status": "processed",
+      "reason": "Thumbnail generated as derived output.",
+      "output_path": "/Users/majordreamwilliams/Documents/New project 8/exports/thumbnail_sample/thumbnails/youtube_16x9.jpg",
+      "source_decode_status": "Source could not be decoded as an image: cannot identify image file '/Users/majordreamwilliams/Documents/New project 8/examples/sample_media/DCIM/IMG_0001.JPG'",
+      "preset": {
+        "name": "YouTube 16x9",
+        "platform": "YouTube",
+        "width": 1280,
+        "height": 720,
+        "aspect_ratio": "16:9",
+        "safe_text_zone": "Keep headline text inside the centered 80% width and 70% height.",
+        "recommended_use": "YouTube video thumbnail and widescreen previews."
+      }
+    },
+    "vertical_9x16": {
+      "status": "processed",
+      "reason": "Thumbnail generated as derived output.",
+      "output_path": "/Users/majordreamwilliams/Documents/New project 8/exports/thumbnail_sample/thumbnails/vertical_9x16.jpg",
+      "source_decode_status": "Source could not be decoded as an image: cannot identify image file '/Users/majordreamwilliams/Documents/New project 8/examples/sample_media/DCIM/IMG_0001.JPG'",
+      "preset": {
+        "name": "Vertical 9x16",
+        "platform": "TikTok, Reels, Shorts",
+        "width": 1080,
+        "height": 1920,
+        "aspect_ratio": "9:16",
+        "safe_text_zone": "Keep text in the middle 70% height and away from top and bottom UI overlays.",
+        "recommended_use": "Short-form vertical video cover."
+      }
+    },
+    "square_1x1": {
+      "status": "processed",
+      "reason": "Thumbnail generated as derived output.",
+      "output_path": "/Users/majordreamwilliams/Documents/New project 8/exports/thumbnail_sample/thumbnails/square_1x1.jpg",
+      "source_decode_status": "Source could not be decoded as an image: cannot identify image file '/Users/majordreamwilliams/Documents/New project 8/examples/sample_media/DCIM/IMG_0001.JPG'",
+      "preset": {
+        "name": "Square 1x1",
+        "platform": "Instagram, LinkedIn, X",
+        "width": 1080,
+        "height": 1080,
+        "aspect_ratio": "1:1",
+        "safe_text_zone": "Keep text inside the centered 80% square.",
+        "recommended_use": "Feed post, carousel cover, and square social preview."
+      }
+    },
+    "feed_4x5": {
+      "status": "processed",
+      "reason": "Thumbnail generated as derived output.",
+      "output_path": "/Users/majordreamwilliams/Documents/New project 8/exports/thumbnail_sample/thumbnails/feed_4x5.jpg",
+      "source_decode_status": "Source could not be decoded as an image: cannot identify image file '/Users/majordreamwilliams/Documents/New project 8/examples/sample_media/DCIM/IMG_0001.JPG'",
+      "preset": {
+        "name": "Feed 4x5",
+        "platform": "Instagram, LinkedIn",
+        "width": 1080,
+        "height": 1350,
+        "aspect_ratio": "4:5",
+        "safe_text_zone": "Keep text inside the centered 80% width and 75% height.",
+        "recommended_use": "Tall feed post and creator announcement graphic."
+      }
+    },
+    "story_9x16": {
+      "status": "processed",
+      "reason": "Thumbnail generated as derived output.",
+      "output_path": "/Users/majordreamwilliams/Documents/New project 8/exports/thumbnail_sample/thumbnails/story_9x16.jpg",
+      "source_decode_status": "Source could not be decoded as an image: cannot identify image file '/Users/majordreamwilliams/Documents/New project 8/examples/sample_media/DCIM/IMG_0001.JPG'",
+      "preset": {
+        "name": "Story 9x16",
+        "platform": "Instagram Stories, TikTok, Reels",
+        "width": 1080,
+        "height": 1920,
+        "aspect_ratio": "9:16",
+        "safe_text_zone": "Keep text away from the top 250px and bottom 320px.",
+        "recommended_use": "Story frame, vertical cover, and mobile-first promo artwork."
+      }
+    },
+    "substack_header": {
+      "status": "processed",
+      "reason": "Thumbnail generated as derived output.",
+      "output_path": "/Users/majordreamwilliams/Documents/New project 8/exports/thumbnail_sample/thumbnails/substack_header.jpg",
+      "source_decode_status": "Source could not be decoded as an image: cannot identify image file '/Users/majordreamwilliams/Documents/New project 8/examples/sample_media/DCIM/IMG_0001.JPG'",
+      "preset": {
+        "name": "Substack Header",
+        "platform": "Substack",
+        "width": 1600,
+        "height": 900,
+        "aspect_ratio": "16:9",
+        "safe_text_zone": "Keep title text inside the centered 75% width.",
+        "recommended_use": "Newsletter header, essay hero, and publication preview."
+      }
+    },
+    "podcast_cover": {
+      "status": "processed",
+      "reason": "Thumbnail generated as derived output.",
+      "output_path": "/Users/majordreamwilliams/Documents/New project 8/exports/thumbnail_sample/thumbnails/podcast_cover.jpg",
+      "source_decode_status": "Source could not be decoded as an image: cannot identify image file '/Users/majordreamwilliams/Documents/New project 8/examples/sample_media/DCIM/IMG_0001.JPG'",
+      "preset": {
+        "name": "Podcast Cover",
+        "platform": "Podcast directories",
+        "width": 3000,
+        "height": 3000,
+        "aspect_ratio": "1:1",
+        "safe_text_zone": "Keep title and host text inside the centered 70% square.",
+        "recommended_use": "Podcast cover art and show tile."
+      }
+    }
+  }
+}

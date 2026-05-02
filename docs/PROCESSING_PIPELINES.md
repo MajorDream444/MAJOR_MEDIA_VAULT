@@ -58,6 +58,32 @@ Write mode only creates derived files under the output directory when dependenci
 python3 scripts/process_selected_media.py --queue exports/sample_audit/processing_queue.json --output-dir exports/processed_sample --limit 5 --write
 ```
 
+## Single Asset Package
+
+Build a complete per-file package with metadata, planned or generated assets, manifest, and notes:
+
+```bash
+python3 scripts/build_asset_package.py --input examples/sample_media/DCIM/VID_0002.MOV --output-dir exports/asset_package_sample
+```
+
+Write mode creates derived outputs when dependencies exist and the source is valid:
+
+```bash
+python3 scripts/build_asset_package.py --input examples/sample_media/DCIM/VID_0002.MOV --output-dir exports/asset_package_sample --write
+```
+
+Add platform thumbnails and prompt files inside the package:
+
+```bash
+python3 scripts/build_asset_package.py --input examples/sample_media/DCIM/VID_0002.MOV --output-dir exports/asset_package_sample --generate-thumbnails --generate-thumbnail-prompts --thumbnail-preset all
+```
+
+Generate platform publishing drafts from an asset package:
+
+```bash
+python3 scripts/generate_content_package.py --asset-package-dir exports/asset_package_sample
+```
+
 ## Whisper Transcription
 
 Requires the local `whisper` CLI to be installed.

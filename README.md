@@ -73,6 +73,10 @@ python3 scripts/scan_google_drive.py --path "/path/to/local/Google Drive"
 python3 scripts/parse_google_takeout.py --path "/path/to/Takeout"
 python3 scripts/run_processing_queue.py --queue queues/processing_queue.json --task-type convert_mov
 python3 scripts/process_selected_media.py --queue exports/sample_audit/processing_queue.json --output-dir exports/processed_sample --limit 5
+python3 scripts/build_asset_package.py --input examples/sample_media/DCIM/VID_0002.MOV --output-dir exports/asset_package_sample
+python3 scripts/generate_platform_thumbnails.py --input examples/sample_media/DCIM/IMG_0001.JPG --output-dir exports/thumbnail_sample
+python3 scripts/generate_thumbnail_prompts.py --asset-package-dir exports/asset_package_sample
+python3 scripts/generate_content_package.py --asset-package-dir exports/asset_package_sample
 ```
 
 See [docs/PROCESSING_PIPELINES.md](/Users/majordreamwilliams/Documents/New%20project%208/docs/PROCESSING_PIPELINES.md).

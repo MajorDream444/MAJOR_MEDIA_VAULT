@@ -9,8 +9,26 @@ from pathlib import Path
 from typing import Dict, Iterable, List, Optional
 
 
-def ensure_tool(tool_name: str) -> str:
+COMMON_TOOL_DIRS = [
+    Path("/opt/homebrew/bin"),
+    Path("/usr/local/bin"),
+    Path("/opt/local/bin"),
+]
+
+
+def find_tool(tool_name: str) -> Optional[str]:
     executable = shutil.which(tool_name)
+    if executable:
+        return executable
+    for tool_dir in COMMON_TOOL_DIRS:
+        candidate = tool_dir / tool_name
+        if candidate.exists() and candidate.is_file():
+            return str(candidate)
+    return None
+
+
+def ensure_tool(tool_name: str) -> str:
+    executable = find_tool(tool_name)
     if not executable:
         raise RuntimeError(f"Required tool not found on PATH: {tool_name}")
     return executable
@@ -18,7 +36,7 @@ def ensure_tool(tool_name: str) -> str:
 
 def tool_command(tool_name: str, dry_run: bool) -> str:
     if dry_run:
-        return shutil.which(tool_name) or tool_name
+        return find_tool(tool_name) or tool_name
     return ensure_tool(tool_name)
 
 

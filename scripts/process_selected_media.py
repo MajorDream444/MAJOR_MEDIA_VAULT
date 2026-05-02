@@ -4,7 +4,6 @@ from __future__ import annotations
 import argparse
 import json
 import mimetypes
-import shutil
 import subprocess
 import sys
 from datetime import datetime, timezone
@@ -15,7 +14,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT))
 
 from src.media_vault.inventory import AUDIO_EXTENSIONS, IMAGE_EXTENSIONS, VIDEO_EXTENSIONS  # noqa: E402
-from src.media_vault.workflows import write_json  # noqa: E402
+from src.media_vault.workflows import find_tool, write_json  # noqa: E402
 
 
 PROCESS_STATUSES = {
@@ -93,7 +92,7 @@ def run_command(command: List[str], output_path: Path, dry_run: bool) -> Dict[st
 
 
 def ffmpeg_path(dry_run: bool) -> Optional[str]:
-    found = shutil.which("ffmpeg")
+    found = find_tool("ffmpeg")
     if found:
         return found
     if dry_run:

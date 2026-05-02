@@ -63,6 +63,37 @@ Run write mode after review. This still never modifies originals; it only create
 python3 scripts/process_selected_media.py --queue exports/sample_audit/processing_queue.json --output-dir exports/processed_sample --limit 5 --write
 ```
 
+## Build Asset Package
+
+```bash
+python3 scripts/build_asset_package.py --input examples/sample_media/DCIM/VID_0002.MOV --output-dir exports/asset_package_sample
+```
+
+Write mode:
+
+```bash
+python3 scripts/build_asset_package.py --input examples/sample_media/DCIM/VID_0002.MOV --output-dir exports/asset_package_sample --write
+```
+
+## Generate Platform Thumbnails
+
+```bash
+python3 scripts/generate_platform_thumbnails.py --input examples/sample_media/DCIM/IMG_0001.JPG --output-dir exports/thumbnail_sample
+python3 scripts/generate_platform_thumbnails.py --input examples/sample_media/DCIM/IMG_0001.JPG --output-dir exports/thumbnail_sample --write
+```
+
+## Generate Thumbnail Prompts
+
+```bash
+python3 scripts/generate_thumbnail_prompts.py --asset-package-dir exports/asset_package_sample
+```
+
+## Generate Content Package
+
+```bash
+python3 scripts/generate_content_package.py --asset-package-dir exports/asset_package_sample
+```
+
 ## Check Dependencies
 
 ```bash
@@ -75,6 +106,10 @@ python3 scripts/check_dependencies.py
 make scan-sample
 make audit-sample
 make process-sample-dry-run
+make package-sample
+make thumbnails-sample
+make thumbnail-prompts-sample
+make content-package-sample
 make check-deps
 make test-compile
 ```

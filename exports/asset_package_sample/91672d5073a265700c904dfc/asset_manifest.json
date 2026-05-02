@@ -1,0 +1,115 @@
+{
+  "media_id": "91672d5073a265700c904dfc",
+  "source_path": "/Users/majordreamwilliams/Documents/New project 8/examples/sample_media/DCIM/VID_0002.MOV",
+  "file_type": "video",
+  "mode": "dry_run",
+  "package_dir": "/Users/majordreamwilliams/Documents/New project 8/exports/asset_package_sample/91672d5073a265700c904dfc",
+  "copy_original": false,
+  "source_safety": "Original was not moved, renamed, modified, uploaded, or deleted.",
+  "created_at": "2026-05-02T07:42:54.218248+00:00",
+  "assets": {
+    "metadata_json": {
+      "status": "processed",
+      "reason": "metadata.json written.",
+      "output_path": "/Users/majordreamwilliams/Documents/New project 8/exports/asset_package_sample/91672d5073a265700c904dfc/metadata.json"
+    },
+    "thumbnail_jpg": {
+      "status": "dry_run_ready",
+      "reason": "Command is ready but --write was not passed.",
+      "output_path": "/Users/majordreamwilliams/Documents/New project 8/exports/asset_package_sample/91672d5073a265700c904dfc/thumbnail.jpg",
+      "command": [
+        "/opt/homebrew/bin/ffmpeg",
+        "-y",
+        "-ss",
+        "00:00:01",
+        "-i",
+        "/Users/majordreamwilliams/Documents/New project 8/examples/sample_media/DCIM/VID_0002.MOV",
+        "-frames:v",
+        "1",
+        "-q:v",
+        "2",
+        "/Users/majordreamwilliams/Documents/New project 8/exports/asset_package_sample/91672d5073a265700c904dfc/thumbnail.jpg"
+      ]
+    },
+    "audio_mp3": {
+      "status": "dry_run_ready",
+      "reason": "Command is ready but --write was not passed.",
+      "output_path": "/Users/majordreamwilliams/Documents/New project 8/exports/asset_package_sample/91672d5073a265700c904dfc/audio.mp3",
+      "command": [
+        "/opt/homebrew/bin/ffmpeg",
+        "-y",
+        "-i",
+        "/Users/majordreamwilliams/Documents/New project 8/examples/sample_media/DCIM/VID_0002.MOV",
+        "-vn",
+        "-codec:a",
+        "libmp3lame",
+        "-q:a",
+        "2",
+        "/Users/majordreamwilliams/Documents/New project 8/exports/asset_package_sample/91672d5073a265700c904dfc/audio.mp3"
+      ]
+    },
+    "converted_mp4": {
+      "status": "dry_run_ready",
+      "reason": "Command is ready but --write was not passed.",
+      "output_path": "/Users/majordreamwilliams/Documents/New project 8/exports/asset_package_sample/91672d5073a265700c904dfc/converted.mp4",
+      "command": [
+        "/opt/homebrew/bin/ffmpeg",
+        "-y",
+        "-i",
+        "/Users/majordreamwilliams/Documents/New project 8/examples/sample_media/DCIM/VID_0002.MOV",
+        "-c:v",
+        "libx264",
+        "-c:a",
+        "aac",
+        "-movflags",
+        "+faststart",
+        "/Users/majordreamwilliams/Documents/New project 8/exports/asset_package_sample/91672d5073a265700c904dfc/converted.mp4"
+      ]
+    },
+    "transcript_txt": {
+      "status": "skipped_missing_dependency",
+      "reason": "whisper is required to generate transcript.txt.",
+      "output_path": "/Users/majordreamwilliams/Documents/New project 8/exports/asset_package_sample/91672d5073a265700c904dfc/transcript.txt"
+    },
+    "summary_md": {
+      "status": "processed",
+      "reason": "summary.md placeholder written.",
+      "output_path": "/Users/majordreamwilliams/Documents/New project 8/exports/asset_package_sample/91672d5073a265700c904dfc/summary.md"
+    },
+    "original_copy": {
+      "status": "skipped_not_applicable",
+      "reason": "Original copy was not requested. Pass --copy-original to copy it.",
+      "output_path": "/Users/majordreamwilliams/Documents/New project 8/exports/asset_package_sample/91672d5073a265700c904dfc/VID_0002.MOV"
+    }
+  },
+  "extensions": {
+    "thumbnails": {
+      "status": "processed",
+      "reason": "Package extension completed.",
+      "command": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "/Users/majordreamwilliams/Documents/New project 8/scripts/generate_platform_thumbnails.py",
+        "--input",
+        "/Users/majordreamwilliams/Documents/New project 8/examples/sample_media/DCIM/VID_0002.MOV",
+        "--asset-package-dir",
+        "/Users/majordreamwilliams/Documents/New project 8/exports/asset_package_sample/91672d5073a265700c904dfc",
+        "--preset",
+        "all"
+      ],
+      "stdout": "Prepared 7 thumbnail preset outputs in dry-run mode: /Users/majordreamwilliams/Documents/New project 8/exports/asset_package_sample/91672d5073a265700c904dfc/thumbnails\nOriginal was not moved, renamed, modified, uploaded, or deleted.\n",
+      "stderr": ""
+    },
+    "thumbnail_prompts": {
+      "status": "processed",
+      "reason": "Package extension completed.",
+      "command": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "/Users/majordreamwilliams/Documents/New project 8/scripts/generate_thumbnail_prompts.py",
+        "--asset-package-dir",
+        "/Users/majordreamwilliams/Documents/New project 8/exports/asset_package_sample/91672d5073a265700c904dfc"
+      ],
+      "stdout": "Wrote 5 thumbnail prompt files: /Users/majordreamwilliams/Documents/New project 8/exports/asset_package_sample/91672d5073a265700c904dfc/prompts\n",
+      "stderr": ""
+    }
+  }
+}
