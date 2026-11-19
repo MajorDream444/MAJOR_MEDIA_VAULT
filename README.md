@@ -1,3 +1,5 @@
+[![Edit on Hanzo](https://hanzo.ai/badges/edit-on-hanzo.svg)](https://hanzo.app/dev?repo=https%3A%2F%2Fgithub.com%2FMajorDream444%2FMAJOR_MEDIA_VAULT)
+
 # MAJOR_MEDIA_VAULT
 
 MAJOR_MEDIA_VAULT is a local-first AI media intelligence engine for turning scattered files into searchable IP without risking originals.
